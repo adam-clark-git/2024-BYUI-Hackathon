@@ -10,15 +10,10 @@ document.getElementById('start-btn').addEventListener('click', function () {
         return;
     }
 
-    // Calculate time intervals
-    let currentWorkTime;
-    let currentBreaksLeft = numberOfBreaks;
-    let breakTimer;
-
 
     function startBackground()
     {
-        
+        startWorkSession(workTime)
 
     }
 
