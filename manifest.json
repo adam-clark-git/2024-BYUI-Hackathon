@@ -10,7 +10,6 @@
     "128": "images/FMLogo128x128.png"
   },
   "action": {
-    "default_popup": "begin_focus.html",
-    "default_icon": "FocusModeLogo2.png"
+    "default_popup": "popup.html"
   }
 }
