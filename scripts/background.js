@@ -20,7 +20,7 @@ chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
 
 
 
-const urlList = chrome.storage.sync.get(['websiteList'], function(result){
+const urlList = chrome.storage.sync.get(['websiteList'], function (result) {
     if (result.websiteList) {
         console.log('Website list retrieved:', result.websiteList);
     }
@@ -60,72 +60,61 @@ chrome.runtime.onMessage.addListener((request) => {
 
 
 
-        function startWorkSession(workTime, numberOfBreaks, breakLength) {
-
-<<<<<<< HEAD
-    chrome.notifications.create({
-        type: 'basic',
-        iconUrl: 'Images/FMLogo16x16.png',  // Ensure you have an icon.png in your extension
-        title: 'Work Session Started',
-        message: 'Stay focused!',
-        priority: 2
-    });
-=======
-            alert('Work session started! Stay focused.');
-
-            chrome.alarms.clearAll();
-
-
-            chrome.alarms.create('workSession', { delayInMinutes: workTime });
->>>>>>> 0bfae40821b2c5d9dd23ad5398937fff94aec136
-
-
-
-            // const breakInterval = workTime / (numberOfBreaks + 1);
-
-            // for (let i = 1; i <= numberOfBreaks; i++) {
-            //     chrome.alarms.create(`break_${i}`, { delayInMinutes: breakInterval * i });
-            // }
-
-
-            //chrome.action.setPopup({ popup: 'running.html' });
-            //window.close();
-            // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
-
-<<<<<<< HEAD
-
-    chrome.action.setPopup({ popup: 'running.html' });
-    //window.close();
-    // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
-}
-
-
-
-function urlChecker(currentUrl) {
-
-    const lowerCurrentUrl = currentUrl.toLowerCase();
-    const lowerUrlsList = urlsList.toLowerCase();
-
-    const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
-
-    if (match) {
-        OnBreakCheck()
-=======
-        };
->>>>>>> 0bfae40821b2c5d9dd23ad5398937fff94aec136
-    }
-);
-;
-
-
-
     function startWorkSession(workTime, numberOfBreaks, breakLength) {
 
-        alert('Work session started! Stay focused.');
+
+        chrome.notifications.create({
+            type: 'basic',
+            iconUrl: 'Images/FMLogo16x16.png',  // Ensure you have an icon.png in your extension
+            title: 'Work Session Started',
+            message: 'Stay focused!',
+            priority: 2
+        });
+
+
+
+        // const breakInterval = workTime / (numberOfBreaks + 1);
+
+        // for (let i = 1; i <= numberOfBreaks; i++) {
+        //     chrome.alarms.create(`break_${i}`, { delayInMinutes: breakInterval * i });
+        // }
+
+
         //chrome.action.setPopup({ popup: 'running.html' });
         //window.close();
         // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
-        
-        
+
+<<<<<<< HEAD
+
+        chrome.action.setPopup({ popup: 'running.html' });
+        //window.close();
+        // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
     }
+
+
+
+    function urlChecker(currentUrl) {
+
+        const lowerCurrentUrl = currentUrl.toLowerCase();
+        const lowerUrlsList = urlsList.toLowerCase();
+
+        const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
+
+        if (match) {
+            OnBreakCheck()
+        }
+);
+
+
+
+
+function startWorkSession(workTime, numberOfBreaks, breakLength) {
+
+    alert('Work session started! Stay focused.');
+    //chrome.action.setPopup({ popup: 'running.html' });
+    //window.close();
+    // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
+
+
+}
 });
