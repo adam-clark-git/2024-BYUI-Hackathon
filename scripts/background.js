@@ -1,13 +1,8 @@
-chrome.runtime.onInstalled.addListener(() => {
-    console.log("Extension installed");
-});
-
 chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
     if (changeInfo.status === 'complete' && tab.url) {
         urlChecker(tab.url);
     }
 });
-
 
 
 const urlList = chrome.storage.sync.get(['websiteList'], function (result) {
@@ -74,13 +69,12 @@ chrome.runtime.onMessage.addListener((request) => {
         chrome.alarms.create('workSessionEnded', { delayInMinutes: workTime });
 
 
+        chrome.action.setPopup({ popup: 'running.html' });
 
         chrome.runtime.sendMessage({
-            type: 'startWorkSession',
+            type: 'startRunning',
             workTime: workTime
         });
-
-        chrome.action.setPopup({ popup: 'running.html' });
 
     }
 
