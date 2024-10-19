@@ -67,17 +67,6 @@ chrome.runtime.onMessage.addListener((request) => {
         // });
 
 
-
-        // const breakInterval = workTime / (numberOfBreaks + 1);
-
-        // for (let i = 1; i <= numberOfBreaks; i++) {
-        //     chrome.alarms.create(`break_${i}`, { delayInMinutes: breakInterval * i });
-        // }
-
-
-
-
-
         chrome.alarms.create('workSessionEnded', { delayInMinutes: workTime });
 
         chrome.action.setPopup({ popup: 'running.html' });
