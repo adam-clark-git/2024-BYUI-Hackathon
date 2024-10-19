@@ -3,6 +3,9 @@
   "name": "Focus Mode",
   "description": "Allows users to focus on work and avoid getting distracted",
   "version": "1.0",
+  "permissions": [
+    "storage"
+  ],
   "icons": {
     "16": "images/FMLogo16x16.png",
     "32": "images/FMLogo32x32.png",
