@@ -51,7 +51,6 @@ const submit = document.getElementById('submit');
 
 dropdownHeader.addEventListener('click', function(event) {
     event.stopPropagation(); 
-    // Toggle dropdown content
     if (dropdownContent.style.display === 'block') {
         dropdownContent.style.display = 'none';
         dropdownHeader.classList.remove('active');
@@ -62,7 +61,7 @@ dropdownHeader.addEventListener('click', function(event) {
 });
 
 dropdownContent.addEventListener('click', function(event) {
-    event.stopPropagation(); // Prevent closing when clicking inside dropdown content
+    event.stopPropagation(); 
 });
 
 document.addEventListener('click', function(event) {
@@ -74,7 +73,7 @@ document.addEventListener('click', function(event) {
 
 if (submit) {
     submit.addEventListener('click', function(event) {
-        event.stopPropagation(); // Close dropdown on submit
+        event.stopPropagation(); 
         dropdownContent.style.display = 'none';
         dropdownHeader.classList.remove('active');
     });
