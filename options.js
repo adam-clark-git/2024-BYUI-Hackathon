@@ -64,8 +64,3 @@ document.addEventListener('click', function(event) {
         dropdownHeader.classList.remove('active');
     }
 });
-
-saveButton.addEventListener('click', function() {
-    dropdownContent.style.display = 'none';
-    dropdownHeader.classList.remove('active');
-});
