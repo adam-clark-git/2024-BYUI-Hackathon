@@ -9,15 +9,6 @@ chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
 });
 
 
-// TEMP FOR TESTING get the real list from options
-// const urlsList = [
-//     "https://www.coolmathgames.com/",
-//     "https://www.other.com",
-//     "https://www.youtube.com/*"
-// ];
-
-
-
 
 const urlList = chrome.storage.sync.get(['websiteList'], function (result) {
     if (result.websiteList) {
@@ -110,4 +101,24 @@ chrome.runtime.onMessage.addListener((request) => {
         }
     }
 
+    function checkNumBreaksIsZero() {
+        if (currentBreaksLeft <= 0 && numberOfBreaks != 1) {
+            alert("NO MORE BREAKS :(");
+            return true;
+        }
+        return false
+    }
+
+    function OnBreakCheck() {
+        var OnBreak = prompt("Are you on break? (Yes/No)", "No")
+        if (OnBreak == "No" || OnBreak == "no")
+            alert("Best get back to work")
+        else {
+            alert("ahhh");
+            IsOnBreak();
+        }
+    }
+
 });
+
+
