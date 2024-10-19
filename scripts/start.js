@@ -10,15 +10,19 @@ document.getElementById('start-btn').addEventListener('click', function () {
         return;
     }
     
-    function startWorkSession() {
 
-        alert('Work session started! Stay focused.');
-        //chrome.action.setPopup({ popup: 'running.html' });
-        //window.close();
-        // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
-        
+    chrome.runtime.sendMessage({
+        type: 'startWorkSession',
+        workTime: workTime,
+        numberOfBreaks: numberOfBreaks,
+        breakLength: breakLength
+    }, (response) => {
+        console.log(response.status);
+    });
 
-    }
+    window.close();
+
+});
 
     // // TEMP FOR TESTING get the real list from options
     // const urlsList = [
@@ -92,7 +96,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
     startWorkSession()
     */
-});
+
 
 
 chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
