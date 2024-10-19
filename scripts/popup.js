@@ -19,12 +19,18 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
     let currentWorkTime = 0;
 
+    function OnBreakCheck() {
+        var OnBreak = prompt("Are you on break? (Yes/No)", "No")
+        if (OnBreak == "No" || OnBreak == "no")
+            alert("Best get back to work")
 
+    }
 
 
     // Function to start work session
     function startWorkSession() {
         alert('Work session started! Stay focused. I WILL DESTROY YOU');
+
         //handleBreaks();
     }
 
