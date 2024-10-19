@@ -10,9 +10,11 @@ document.getElementById('start-btn').addEventListener('click', function () {
         return;
     }
 
+
     function startBackground()
     {
         chrome.action.setPopup({popup: 'hello.html'});
+        startWorkSession(workTime)
 
     }
 

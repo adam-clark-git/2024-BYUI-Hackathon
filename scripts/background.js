@@ -104,7 +104,7 @@ var Timer = function (callback, delay) {
 
 
 
-function startWorkSession() {
+function startWorkSession(currentWorkTime) {
     alert('Work session started! Stay focused.');
     var currentWorkTime = new Timer(function () {
         alert("Work is done!");
