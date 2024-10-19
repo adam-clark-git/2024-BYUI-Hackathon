@@ -22,31 +22,10 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
 });
 
-// // TEMP FOR TESTING get the real list from options
-// const urlsList = [
-//     "https://www.coolmathgames.com/",
-//     "https://www.other.com",
-//     "https://www.youtube.com/*"
-// ];
-/*
-
-let currentWorkTime;
-let currentBreaksLeft = numberOfBreaks;
-let breakTimer;
-
- 
 
 
 // Should run whenever a user goes to a flagged website
-function OnBreakCheck() {
-    var OnBreak = prompt("Are you on break? (Yes/No)", "No")
-    if (OnBreak == "No" || OnBreak == "no")
-        alert("Best get back to work")
-    else {
-        alert("ahhh");
-        IsOnBreak();
-    }
-}
+
 
 
 
@@ -80,20 +59,11 @@ function returnToWork() {
     currentWorkTime.resume();
 }
 
-// check if break count is zero
-function checkNumBreaksIsZero() {
-    if (currentBreaksLeft <= 0 && numberOfBreaks != 1) {
-        alert("NO MORE BREAKS :(");
-        return true;
-    }
-    return false
-}
+
 function ShutOff() {
 
 }
 
-startWorkSession()
-*/
 
 
 
@@ -115,24 +85,3 @@ function urlChecker(currentUrl) {
         OnBreakCheck()
     }
 }
-/*
-var Timer = function (callback, delay) {
-   var timerId, start, remaining = delay;
-
-   this.pause = function () {
-       window.clearTimeout(timerId);
-       timerId = null;
-       remaining -= Date.now() - start;
-   };
-
-   this.resume = function () {
-       if (timerId) {
-           return;
-       }
-
-       start = Date.now();
-       timerId = window.setTimeout(callback, remaining);
-   };
-
-   this.resume();
-};*/

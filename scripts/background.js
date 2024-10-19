@@ -2,6 +2,14 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log("Extension installed");
 });
 
+// TEMP FOR TESTING get the real list from options
+const urlsList = [
+    "https://www.coolmathgames.com/",
+    "https://www.other.com",
+    "https://www.youtube.com/*"
+];
+
+
 
 // Listen for alarms
 chrome.alarms.onAlarm.addListener((alarm) => {
@@ -59,3 +67,24 @@ chrome.runtime.onMessage.addListener((request) => {
         };
     }
 });
+
+
+function OnBreakCheck() {
+    var OnBreak = prompt("Are you on break? (Yes/No)", "No")
+    if (OnBreak == "No" || OnBreak == "no")
+        alert("Best get back to work")
+    else {
+        alert("ahhh");
+        IsOnBreak();
+    }
+}
+
+
+// check if break count is zero
+function checkNumBreaksIsZero() {
+    if (currentBreaksLeft <= 0 && numberOfBreaks != 1) {
+        alert("NO MORE BREAKS :(");
+        return true;
+    }
+    return false
+}
