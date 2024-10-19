@@ -9,20 +9,14 @@ document.getElementById('start-btn').addEventListener('click', function () {
         alert('Please enter valid values for all fields.');
         return;
     }
-
     
-    
-
     function startWorkSession() {
 
         alert('Work session started! Stay focused.');
-        chrome.action.setPopup({ popup: 'running.html' });
-        window.close();
-        var currentWorkTime = new Timer(function () {
-            alert("Work is done!");
-            ShutOff();
-        }, 1000 * workTime)
-        OnBreakCheck();
+        //chrome.action.setPopup({ popup: 'running.html' });
+        //window.close();
+        // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
+        
 
     }
 
@@ -32,7 +26,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
     //     "https://www.other.com",
     //     "https://www.youtube.com/*"
     // ];
-
+    /*
 
     let currentWorkTime;
     let currentBreaksLeft = numberOfBreaks;
@@ -97,7 +91,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
     }
 
     startWorkSession()
-
+    */
 });
 
 
@@ -119,7 +113,7 @@ function urlChecker(currentUrl) {
         OnBreakCheck()
     }
 }
- 
+ /*
 var Timer = function (callback, delay) {
     var timerId, start, remaining = delay;
 
@@ -139,4 +133,4 @@ var Timer = function (callback, delay) {
     };
 
     this.resume();
-};
+};*/
