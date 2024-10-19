@@ -15,6 +15,14 @@ document.getElementById('start-btn').addEventListener('click', function () {
     let currentBreaksLeft = numberOfBreaks;
     let breakTimer;
 
+    chrome.runtime.onMessage.addListener((request) => {
+        if (request.action === "OnBreakCheck") {
+            OnBreakCheck();
+        }
+    });
+
+
+
     // Should run whenever a user goes to a flagged website
     function OnBreakCheck() {
         var OnBreak = prompt("Are you on break? (Yes/No)", "No")
