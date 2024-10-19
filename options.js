@@ -40,10 +40,16 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
 
   const website = document.getElementById('name');
-  array.push(website.value);
+  siteArray.push(website.value);
   console.log(siteArray);
   saveWebsites(siteArray)
 });
+
+function saveWebsites(array) {
+  chrome.storage.local.set({websites:array}).then(() => {
+    console.log("Value is set");
+  });
+}
 
 const dropdownHeader = document.querySelector('.dropdown-header');
 const dropdownContent = dropdownHeader.querySelector('.dropdown-content');
