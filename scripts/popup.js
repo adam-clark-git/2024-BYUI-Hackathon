@@ -132,19 +132,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
         // // testing code, delete later
         // OnBreakCheck()
     }
-
-        startWorkSession(workTime);
-        panic();
-        
-    }
-    function testAfter() {
-        panic();
-        for (let i = 0; i < 5; i++) {
-            setTimeout(panic(), 5000)
-        }
-    }
-    function panic() {
-        alert("ahh");
+    
     function ShutOff() {
 
     }
@@ -154,5 +142,3 @@ document.getElementById('start-btn').addEventListener('click', function () {
     testAfter();
 }); 
 
-    startWorkSession();
-})
