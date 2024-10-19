@@ -150,9 +150,7 @@ chrome.runtime.onMessage.addListener((request) => {
     }
 
 
-    function ShutOff() {
 
-    }
 
 });
 
