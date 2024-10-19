@@ -13,9 +13,10 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
     function startBackground()
     {
-        chrome.action.setPopup({popup: 'hello.html'});
-        startWorkSession(workTime)
-
+        chrome.action.setPopup({popup: 'running.html'});
+        window.close();
+        startWorkSession(workTime);
+        
     }
 
     // Start the work session
