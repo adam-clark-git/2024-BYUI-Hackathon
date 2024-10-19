@@ -48,7 +48,7 @@ form.addEventListener("submit", function(event) {
   });
 });
 
-/* const dropdownHeader = document.querySelector('.dropdown-header');
+const dropdownHeader = document.querySelector('.dropdown-header');
 const dropdownContent = dropdownHeader.querySelector('.dropdown-content');
 const saveButton = document.getElementById('save-btn');
 
@@ -68,4 +68,4 @@ document.addEventListener('click', function(event) {
 saveButton.addEventListener('click', function() {
     dropdownContent.style.display = 'none';
     dropdownHeader.classList.remove('active');
-}); */
+});
