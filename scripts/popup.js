@@ -18,17 +18,36 @@ document.getElementById('start-btn').addEventListener('click', function () {
     const breakIntervals = (workTime / (numberOfBreaks + 1)); // Time between breaks
 
     let currentWorkTime = 0;
+    let currentBreaksLeft = numberOfBreaks;
+    let breakTimer;
 
     function OnBreakCheck() {
         var OnBreak = prompt("Are you on break? (Yes/No)", "No")
         if (OnBreak == "No" || OnBreak == "no")
             alert("Best get back to work")
         else {
-            setTimeout(function() {
-                alert("Break Over")
-            }, 1000 * breakLength / 60)
+            if (!checkNumBreaksIsZero()) {
+                breakTimer = setTimeout(function() {
+                    alert("Break Over")
+                    currentBreaksLeft += -1
+                }, 1000 * (breakLength / 60))
+            }
+            
         }
             
+    }
+    function returnToWork() {
+        if (breakTimer != null) {
+            breakTimer.clearInteval();
+            currentBreaksLeft += -1;
+        }
+        checkNumBreaksIsZero();
+    }
+    function checkNumBreaksIsZero() {
+        if (currentBreaksLeft <= 0) {
+            alert("NO MORE BREAKS :(");
+            return false;
+        }
     }
 
     // Function to start work session
