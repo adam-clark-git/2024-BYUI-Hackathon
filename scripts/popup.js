@@ -11,30 +11,31 @@ document.getElementById('start-btn').addEventListener('click', function () {
     }
 
     // Calculate time intervals
-    const breakIntervals = (workTime / (numberOfBreaks + 1)); // Time between breaks
-
     var currentWorkTime = new Timer();
     let currentBreaksLeft = numberOfBreaks;
     let breakTimer;
 
+    // Should run whenever a user goes to a flagged website
     function OnBreakCheck() {
         var OnBreak = prompt("Are you on break? (Yes/No)", "No")
         if (OnBreak == "No" || OnBreak == "no")
             alert("Best get back to work")
         else {
-            if (!checkNumBreaksIsZero()) {
-                if (breakTimer != null) {
-                    breakTimer.resume();
-                }
-                var breakTimer = new Timer(function() {
-                    alert("Break Over")
-                    currentBreaksLeft += -1
-                    breakTimer = null;
-                }, 1000 * (breakLength / 60))
-            }
-            
+            IsOnBreak()
         }
             
+    }
+    // Should run whenever user selects to go on a break
+    function IsOnBreak() {
+
+        if (breakTimer != null) {
+            breakTimer.resume();
+        }
+        var breakTimer = new Timer(function() {
+            alert("Break Over")
+            currentBreaksLeft += -1
+            BreakTimer = null;
+        }, 1000 * (breakLength / 60))
     }
     var Timer = function(callback, delay) {
         var timerId, start, remaining = delay;
@@ -76,25 +77,6 @@ document.getElementById('start-btn').addEventListener('click', function () {
     }
 
     // Function to handle breaks at intervals
-    function handleBreaks() {
-        for (let i = 1; i <= numberOfBreaks; i++) {
-            setTimeout(function () {
-                alert(`Break ${i} started! Take a ${breakLength / 60} minute break.`);
-
-                // End the break after breakLength
-                setTimeout(function () {
-                    alert(`Break ${i} ended! Back to work.`);
-                }, breakLength * 1000);
-
-            }, breakIntervals * i * 1000); // Delay for break intervals
-        }
-
-        // End of work session after total work time
-        setTimeout(function () {
-            alert('Work session completed! Great job!');
-        }, workTime * 1000);
-    }
-
     // Start the work session
     startWorkSession();
 });
