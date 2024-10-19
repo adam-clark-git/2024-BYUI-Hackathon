@@ -44,34 +44,33 @@ chrome.runtime.onMessage.addListener((request) => {
         const { workTime, numberOfBreaks, breakLength } = request;
         startWorkSession(workTime, numberOfBreaks, breakLength);
     }
-
-
-
-        function startWorkSession(workTime, numberOfBreaks, breakLength) {
-
-            alert('Work session started! Stay focused.');
-
-            chrome.alarms.clearAll();
-
-
-            chrome.alarms.create('workSession', { delayInMinutes: workTime });
-
-
-
-            // const breakInterval = workTime / (numberOfBreaks + 1);
-
-            // for (let i = 1; i <= numberOfBreaks; i++) {
-            //     chrome.alarms.create(`break_${i}`, { delayInMinutes: breakInterval * i });
-            // }
-
-
-            //chrome.action.setPopup({ popup: 'running.html' });
-            //window.close();
-            // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
-
-        };
-    }
 });
+
+
+
+function startWorkSession(workTime, numberOfBreaks, breakLength) {
+
+    alert('Work session started! Stay focused.');
+
+    chrome.alarms.clearAll();
+
+
+    chrome.alarms.create('workSession', { delayInMinutes: workTime });
+
+
+
+    // const breakInterval = workTime / (numberOfBreaks + 1);
+
+    // for (let i = 1; i <= numberOfBreaks; i++) {
+    //     chrome.alarms.create(`break_${i}`, { delayInMinutes: breakInterval * i });
+    // }
+
+
+    chrome.action.setPopup({ popup: 'running.html' });
+    //window.close();
+    // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
+
+};
 
 
 function urlChecker(currentUrl) {
