@@ -24,7 +24,6 @@ function urlChecker(currentUrl) {
     const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
 
     if (match) {
-
         OnBreakCheck()
     }
 }
