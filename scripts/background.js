@@ -1,6 +1,6 @@
-// TEMP FOR TESTING get the real list for options
+// TEMP FOR TESTING get the real list from options
 const urlsList = [
-    "https://www.coolmath.com/",
+    "https://www.coolmathgames.com/",
     "https://www.other.com",
     "https://www.youtube.com/*"
 ];
@@ -20,7 +20,8 @@ function urlChecker(currentUrl) {
     const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
 
     if (match) {
-        OnBreakCheck()
+        chrome.runtime.sendMessage({ action: "OnBreakCheck"})
+        // OnBreakCheck()
     } 
 }
 
