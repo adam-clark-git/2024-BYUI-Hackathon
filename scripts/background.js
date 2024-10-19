@@ -66,13 +66,17 @@ chrome.runtime.onMessage.addListener((request) => {
         //     priority: 2
         // });
 
+        const startTime = Date.now();  // Get the current time
+
+        chrome.storage.local.set({
+            'workSessionStartTime': startTime,
+            'workSessionDuration': workTime * 60 * 1000 // Convert to milliseconds
+        });
+
 
         chrome.alarms.create('workSessionEnded', { delayInMinutes: workTime });
 
         chrome.action.setPopup({ popup: 'running.html' });
-
-
-        // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
 
     }
 
@@ -106,6 +110,43 @@ chrome.runtime.onMessage.addListener((request) => {
             alert("ahhh");
             IsOnBreak();
         }
+    }
+
+
+
+    // Should run whenever user selects to go on a break
+    function IsOnBreak() {
+        //checks if there are no more breaks
+        if (currentWorkTime != null) {
+            currentWorkTime.pause();
+        }
+        if (checkNumBreaksIsZero) {
+            return
+        }
+        // checks if there was a timer already running
+        if (breakTimer != null) {
+            breakTimer.resume();
+            return
+        }
+        // starts a new timer
+        var breakTimer = new Timer(function () {
+            alert("Break Over");
+            currentBreaksLeft += -1;
+            breakTimer = null;
+        }, 1000 * (breakLength / 60))
+    }
+
+    // starts the work time and pauses? the break timer i think that needs to change
+    function returnToWork() {
+        if (breakTimer != null) {
+            breakTimer.pause();
+        }
+        currentWorkTime.resume();
+    }
+
+
+    function ShutOff() {
+
     }
 
 });
