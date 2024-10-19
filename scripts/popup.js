@@ -23,11 +23,12 @@ document.getElementById('start-btn').addEventListener('click', function () {
         var OnBreak = prompt("Are you on break? (Yes/No)", "No")
         if (OnBreak == "No" || OnBreak == "no")
             alert("Best get back to work")
-        else
-            setTimeout(GetBackToWork(), 1000 * breakLength)
-    }
-    function GetBackToWork() {
-        alert("WAKEUP WAKEUP WAKEUP");
+        else {
+            setTimeout(function() {
+                alert("Break Over")
+            }, 1000 * breakLength / 60)
+        }
+            
     }
 
     // Function to start work session
