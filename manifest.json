@@ -7,13 +7,12 @@
     "storage"
   ],
   "icons": {
-    "16": "images/TinyFMLogo.png",
-    "32": "images/icon-32.png",
-    "48": "images/icon-48.png",
-    "128": "images/icon-128.png"
+    "16": "images/FMLogo16x16.png",
+    "32": "images/FMLogo32x32.png",
+    "48": "images/FMLogo48x48.png",
+    "128": "images/FMLogo128x128.png"
   },
   "action": {
-    "default_popup": "begin_focus.html",
-    "default_icon": "FocusModeLogo.png"
+    "default_popup": "popup.html"
   }
 }
