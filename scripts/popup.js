@@ -19,6 +19,9 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
     let currentWorkTime = 0;
 
+
+
+
     // Function to start work session
     function startWorkSession() {
         alert('Work session started! Stay focused. I WILL DESTROY YOU');
