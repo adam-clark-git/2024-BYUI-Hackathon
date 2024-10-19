@@ -5,7 +5,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
     const breakLength = parseInt(document.getElementById('break-length').value) * 60; // convert to seconds
 
     // Validate inputs
-    if (workTime1 <= 0 || numberOfBreaks1 < 0 || breakLength1 <= 0) {
+    if (workTime <= 0 || numberOfBreaks < 0 || breakLength <= 0) {
         alert('Please enter valid values for all fields.');
         return;
     }
@@ -17,10 +17,12 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
         alert('Work session started! Stay focused.');
         chrome.action.setPopup({ popup: 'running.html' });
+        window.close();
         var currentWorkTime = new Timer(function () {
             alert("Work is done!");
             ShutOff();
         }, 1000 * workTime)
+        OnBreakCheck();
 
     }
 
@@ -45,7 +47,8 @@ document.getElementById('start-btn').addEventListener('click', function () {
         if (OnBreak == "No" || OnBreak == "no")
             alert("Best get back to work")
         else {
-            IsOnBreak()
+            alert("ahhh");
+            IsOnBreak();
         }
     }
 
@@ -87,6 +90,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
             alert("NO MORE BREAKS :(");
             return true;
         }
+        return false
     }
     function ShutOff() {
 
@@ -115,6 +119,7 @@ function urlChecker(currentUrl) {
         OnBreakCheck()
     }
 }
+ 
 var Timer = function (callback, delay) {
     var timerId, start, remaining = delay;
 
