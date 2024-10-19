@@ -16,9 +16,20 @@ document.getElementById('start-btn').addEventListener('click', function () {
         chrome.action.setPopup({popup: 'running.html'});
         window.close();
         startWorkSession(workTime);
+        panic();
         
+    }
+    function testAfter() {
+        panic();
+        for (let i = 0; i < 5; i++) {
+            setTimeout(panic(), 5000)
+        }
+    }
+    function panic() {
+        alert("ahh");
     }
 
     // Start the work session
     startBackground();
+    testAfter();
 }); 

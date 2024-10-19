@@ -5,6 +5,11 @@ const urlsList = [
     "https://www.youtube.com/*"
 ];
 
+//Time should always be in seconds
+const workTime = 2000;
+const numberOfBreaks = 3;
+const breakLength = 500;
+
 let currentWorkTime;
 let currentBreaksLeft;
 let breakTimer;
@@ -69,7 +74,9 @@ function returnToWork() {
     if (breakTimer != null) {
         breakTimer.pause();
     }
-    currentWorkTime.resume();
+    if (currentWorkTime != null) {
+        currentWorkTime.resume();
+    }
 }
 
 // check if break count is zero
