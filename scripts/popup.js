@@ -132,11 +132,13 @@ document.getElementById('start-btn').addEventListener('click', function () {
         // // testing code, delete later
         // OnBreakCheck()
     }
-
+    
     function ShutOff() {
 
     }
 
+    // Start the background session
+    startBackground();
+    testAfter();
+}); 
 
-    startWorkSession();
-})
