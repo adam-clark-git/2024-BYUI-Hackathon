@@ -14,6 +14,6 @@ chrome.runtime.onMessage.addListener((request) => {
         //window.close();
         // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
         
-
-    },
+        
+    }
 });
