@@ -54,20 +54,12 @@ function saveWebsites(array) {
   });
 }
 const submit = document.getElementById('submit');
+const saveButton = document.getElementById('save-btn');
 
 dropdownHeader.addEventListener('click', function(event) {
-    event.stopPropagation(); 
-    if (dropdownContent.style.display === 'block') {
-        dropdownContent.style.display = 'none';
-        dropdownHeader.classList.remove('active');
-    } else {
-        dropdownContent.style.display = 'block';
-        dropdownHeader.classList.add('active');
-    }
-});
-
-dropdownContent.addEventListener('click', function(event) {
-    event.stopPropagation(); 
+    event.stopPropagation(); // Stop the click from propagating to the document
+    this.classList.toggle('active');
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
 });
 
 document.addEventListener('click', function(event) {
@@ -76,11 +68,3 @@ document.addEventListener('click', function(event) {
         dropdownHeader.classList.remove('active');
     }
 });
-
-if (submit) {
-    submit.addEventListener('click', function(event) {
-        event.stopPropagation(); 
-        dropdownContent.style.display = 'none';
-        dropdownHeader.classList.remove('active');
-    });
-}
