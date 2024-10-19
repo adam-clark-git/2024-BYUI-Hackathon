@@ -30,7 +30,42 @@ const restoreOptions = () => {
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 
-const dropdownHeader = document.querySelector('.dropdown-header');
-  dropdownHeader.addEventListener('click', function () {
-    this.parentElement.classList.toggle('active');
+const form = document.getElementById('websiteForm');
+const websiteList = document.getElementById('websiteList')
+const websites = websiteList.getElementsByTagName('li'); 
+
+const array = Array.from(websites).map(item => item.textContent);
+
+console.log(array);  // ["Item 1", "Item 2", "Item 3"]
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const website = document.getElementById('name');
+  array.push(website.value);
+  console.log(array);
+  chrome.storage.local.set({websites:array }).then(() => {
+    console.log("Value is set");
   });
+});
+
+/* const dropdownHeader = document.querySelector('.dropdown-header');
+const dropdownContent = dropdownHeader.querySelector('.dropdown-content');
+const saveButton = document.getElementById('save-btn');
+
+dropdownHeader.addEventListener('click', function(event) {
+    event.stopPropagation(); // Stop the click from propagating to the document
+    this.classList.toggle('active');
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+});
+
+document.addEventListener('click', function(event) {
+    if (!dropdownHeader.contains(event.target)) {
+        dropdownContent.style.display = 'none';
+        dropdownHeader.classList.remove('active');
+    }
+});
+
+saveButton.addEventListener('click', function() {
+    dropdownContent.style.display = 'none';
+    dropdownHeader.classList.remove('active');
+}); */
