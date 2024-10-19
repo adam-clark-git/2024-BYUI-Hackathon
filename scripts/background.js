@@ -5,7 +5,7 @@ const urlsList = [
     "https://www.youtube.com/*"
 ];
 
-let currentWorkTime;
+// let currentWorkTime;
 let currentBreaksLeft;
 let breakTimer;
 
