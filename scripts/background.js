@@ -9,11 +9,16 @@ chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
 });
 
 // TEMP FOR TESTING get the real list from options
-const urlsList = [
-    "https://www.coolmathgames.com/",
-    "https://www.other.com",
-    "https://www.youtube.com/*"
-];
+// const urlsList = [
+//     "https://www.coolmathgames.com/",
+//     "https://www.other.com",
+//     "https://www.youtube.com/*"
+// ];
+
+
+
+
+
 
 
 // Listen for alarms
@@ -21,7 +26,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     if (alarm.name === 'workSession') {
         chrome.notifications.create({
             type: 'basic',
-            iconUrl: 'Images/FMLogo128x128.png',  // Add your extension's icon here
+            iconUrl: 'Images/FMLogo16x16.png',
             title: 'Work Session Completed',
             message: 'Good job! Your work session is over!',
             priority: 2
@@ -30,7 +35,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
         const breakNumber = alarm.name.split('_')[1];
         chrome.notifications.create({
             type: 'basic',
-            iconUrl: 'Images/FMLogo128x128.png',
+            iconUrl: 'Images/FMLogo16x16.png',
             title: `Break ${breakNumber}`,
             message: `It's time for a break! Take a rest.`,
             priority: 2
@@ -52,7 +57,7 @@ function startWorkSession(workTime, numberOfBreaks, breakLength) {
 
     chrome.notifications.create({
         type: 'basic',
-        iconUrl: 'Images/FMLogo128x128.png',  // Ensure you have an icon.png in your extension
+        iconUrl: 'Images/FMLogo16x16.png',  // Ensure you have an icon.png in your extension
         title: 'Work Session Started',
         message: 'Stay focused!',
         priority: 2
@@ -70,6 +75,7 @@ function startWorkSession(workTime, numberOfBreaks, breakLength) {
     //window.close();
     // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
 }
+
 
 
 function urlChecker(currentUrl) {

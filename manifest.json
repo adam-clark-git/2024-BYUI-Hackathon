@@ -12,7 +12,7 @@
     "background"
   ],
   "host_permissions": [
-    "<all_urls>" 
+    "<all_urls>"
   ],
   "options_page": "options.html",
   "icons": {
@@ -26,8 +26,9 @@
     "type": "module"
   },
   "action": {
-    "default_popup": "start-decepticon.html"
-    
+    "default_popup": "start-decepticon.html",
+    "default_icon": {
+      "16": "images/FMLogo16x16.png"
+    }
   }
-  
 }
