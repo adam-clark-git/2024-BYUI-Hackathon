@@ -1,3 +1,2 @@
 # 2024-BYUI-Hackathon
-// Are we having fun or what!
-// what
+Project goal is to create an app that prevents users from accessing websites that they find distracting.
