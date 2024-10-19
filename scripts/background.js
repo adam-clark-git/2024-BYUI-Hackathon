@@ -101,7 +101,7 @@ chrome.runtime.onMessage.addListener((request) => {
         }
     }
 
-    function checkNumBreaksIsZero() {
+    function checkNumBreaksIsZero(currentBreaksLeft) {
         if (currentBreaksLeft <= 0 && numberOfBreaks != 1) {
             alert("NO MORE BREAKS :(");
             return true;

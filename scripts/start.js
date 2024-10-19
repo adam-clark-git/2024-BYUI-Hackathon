@@ -71,5 +71,3 @@ chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
         urlChecker(tab.url);
     }
 });
-
-
