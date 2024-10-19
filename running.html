@@ -5,10 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+      border-radius: 5px;
+      padding: 10px;
+      width: 300px;
+      height: 300px;
+      background-color: rgb(61, 61, 61);
+      color: white;
+    }
+
+    #timer {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
+
+
 <body>
-  <h1>Howdy!</h1>
+  <h1>Work Session</h1>
+  <div id="timer">00:00:00</div>
+
+  <button id="pause-btn">Pause</button>
+  <button id="resume-btn" disabled>Resume</button>
+  <button id="cancel-btn">Cancel</button>
+
   <script src="focus.js"></script>
 </body>
 
