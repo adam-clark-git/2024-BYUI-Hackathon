@@ -10,7 +10,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
         return;
     }
 
-    startWorkSession(workTimeTemp, numberOfBreaksTemp, breakLengthTemp)
+    
     
 
     function startWorkSession() {
@@ -36,24 +36,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
     let currentBreaksLeft = numberOfBreaks;
     let breakTimer;
 
-    chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
-        if (changeInfo.status === 'complete' && tab.url) {
-            urlChecker(tab.url);
-        }
-    });
-
-
-    function urlChecker(currentUrl) {
-
-        const lowerCurrentUrl = currentUrl.toLowerCase();
-        const lowerUrlsList = urlsList.toLowerCase();
-
-        const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
-
-        if (match) {
-            OnBreakCheck()
-        }
-    }
+    
 
 
     // Should run whenever a user goes to a flagged website
@@ -105,35 +88,50 @@ document.getElementById('start-btn').addEventListener('click', function () {
             return true;
         }
     }
-
-
-    var Timer = function (callback, delay) {
-        var timerId, start, remaining = delay;
-
-        this.pause = function () {
-            window.clearTimeout(timerId);
-            timerId = null;
-            remaining -= Date.now() - start;
-        };
-
-        this.resume = function () {
-            if (timerId) {
-                return;
-            }
-
-            start = Date.now();
-            timerId = window.setTimeout(callback, remaining);
-        };
-
-        this.resume();
-    };
-
-
-
     function ShutOff() {
 
     }
 
+    startWorkSession()
+
+});
 
 
-    });
+chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
+    if (changeInfo.status === 'complete' && tab.url) {
+        urlChecker(tab.url);
+    }
+});
+
+
+function urlChecker(currentUrl) {
+
+    const lowerCurrentUrl = currentUrl.toLowerCase();
+    const lowerUrlsList = urlsList.toLowerCase();
+
+    const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
+
+    if (match) {
+        OnBreakCheck()
+    }
+}
+var Timer = function (callback, delay) {
+    var timerId, start, remaining = delay;
+
+    this.pause = function () {
+        window.clearTimeout(timerId);
+        timerId = null;
+        remaining -= Date.now() - start;
+    };
+
+    this.resume = function () {
+        if (timerId) {
+            return;
+        }
+
+        start = Date.now();
+        timerId = window.setTimeout(callback, remaining);
+    };
+
+    this.resume();
+};
