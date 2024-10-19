@@ -19,6 +19,15 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
     let currentWorkTime = 0;
 
+    function onBreakCheck() {
+        var onBreak = prompt("Are you on a break? (Yes/No)", "No")
+        if (onBreak == "No" || onBreak == "no") {
+            alert('Best get back to work')
+        }
+
+
+    }
+
 
 
 
@@ -26,6 +35,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
     function startWorkSession() {
         alert('Work session started! Stay focused. I WILL DESTROY YOU');
         //handleBreaks();
+        onBreakCheck()
     }
 
     // Function to handle breaks at intervals
