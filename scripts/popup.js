@@ -17,7 +17,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
     // Calculate time intervals
     const breakIntervals = (workTime / (numberOfBreaks + 1)); // Time between breaks
 
-    let currentWorkTime = 0;
+    var currentWorkTime = new Timer();
     let currentBreaksLeft = numberOfBreaks;
     let breakTimer;
 
@@ -27,21 +27,43 @@ document.getElementById('start-btn').addEventListener('click', function () {
             alert("Best get back to work")
         else {
             if (!checkNumBreaksIsZero()) {
-                breakTimer = setTimeout(function() {
+                if (breakTimer != null) {
+                    breakTimer.resume();
+                }
+                var breakTimer = new Timer(function() {
                     alert("Break Over")
                     currentBreaksLeft += -1
+                    breakTimer = null;
                 }, 1000 * (breakLength / 60))
             }
             
         }
             
     }
+    var Timer = function(callback, delay) {
+        var timerId, start, remaining = delay;
+    
+        this.pause = function() {
+            window.clearTimeout(timerId);
+            timerId = null;
+            remaining -= Date.now() - start;
+        };
+    
+        this.resume = function() {
+            if (timerId) {
+                return;
+            }
+    
+            start = Date.now();
+            timerId = window.setTimeout(callback, remaining);
+        };
+    
+        this.resume();
+    };
     function returnToWork() {
         if (breakTimer != null) {
-            breakTimer.clearInteval();
-            currentBreaksLeft += -1;
+            breakTimer.pause();
         }
-        checkNumBreaksIsZero();
     }
     function checkNumBreaksIsZero() {
         if (currentBreaksLeft <= 0) {
