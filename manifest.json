@@ -19,7 +19,7 @@
     "128": "images/FMLogo128x128.png"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "start-decepticon.html"
     
   }
   

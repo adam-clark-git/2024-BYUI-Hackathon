@@ -10,16 +10,13 @@ document.getElementById('start-btn').addEventListener('click', function () {
         return;
     }
 
-    // Calculate time intervals
-    let currentWorkTime;
-    let currentBreaksLeft = numberOfBreaks;
-    let breakTimer;
-
 
     function startBackground()
     {
+        chrome.action.setPopup({popup: 'running.html'});
+        window.close();
+        startWorkSession(workTime);
         
-
     }
 
     // Start the work session
