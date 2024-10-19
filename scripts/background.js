@@ -8,16 +8,6 @@ chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
     }
 });
 
-// TEMP FOR TESTING get the real list from options
-// const urlsList = [
-//     "https://www.coolmathgames.com/",
-//     "https://www.other.com",
-//     "https://www.youtube.com/*"
-// ];
-
-
-
-
 
 
 const urlList = chrome.storage.sync.get(['websiteList'], function (result) {
@@ -31,23 +21,26 @@ const urlList = chrome.storage.sync.get(['websiteList'], function (result) {
 
 // Listen for alarms
 chrome.alarms.onAlarm.addListener((alarm) => {
+
     if (alarm.name === 'workSession') {
-        chrome.notifications.create({
-            type: 'basic',
-            iconUrl: 'Images/FMLogo16x16.png',
-            title: 'Work Session Completed',
-            message: 'Good job! Your work session is over!',
-            priority: 2
-        });
+
+        // chrome.notifications.create({
+        //     type: 'basic',
+        //     iconUrl: 'Images/FMLogo16x16.png',
+        //     title: 'Work Session Completed',
+        //     message: 'Good job! Your work session is over!',
+        //     priority: 2
+        // });
     } else if (alarm.name.startsWith('break_')) {
         const breakNumber = alarm.name.split('_')[1];
-        chrome.notifications.create({
-            type: 'basic',
-            iconUrl: 'Images/FMLogo16x16.png',
-            title: `Break ${breakNumber}`,
-            message: `It's time for a break! Take a rest.`,
-            priority: 2
-        });
+
+        // chrome.notifications.create({
+        //     type: 'basic',
+        //     iconUrl: 'Images/FMLogo16x16.png',
+        //     title: `Break ${breakNumber}`,
+        //     message: `It's time for a break! Take a rest.`,
+        //     priority: 2
+        // });
     }
 });
 
@@ -62,31 +55,25 @@ chrome.runtime.onMessage.addListener((request) => {
 
     function startWorkSession(workTime, numberOfBreaks, breakLength) {
 
+        console.log("stuff")
 
-        chrome.notifications.create({
-            type: 'basic',
-            iconUrl: 'Images/FMLogo16x16.png',  // Ensure you have an icon.png in your extension
-            title: 'Work Session Started',
-            message: 'Stay focused!',
-            priority: 2
-        });
+        // chrome.notifications.create({
+        //     type: 'basic',
 
-
-
-        // const breakInterval = workTime / (numberOfBreaks + 1);
-
-        // for (let i = 1; i <= numberOfBreaks; i++) {
-        //     chrome.alarms.create(`break_${i}`, { delayInMinutes: breakInterval * i });
-        // }
+        //     iconUrl: 'Images/FMLogo16x16.png',  // Ensure you have an icon.png in your extension
+        //     title: 'Work Session Started',
+        //     message: 'Stay focused!',
+        //     priority: 2
+        // });
 
 
-        //chrome.action.setPopup({ popup: 'running.html' });
-        //window.close();
-        // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
+        chrome.alarms.create('workSessionEnded', { delayInMinutes: workTime });
 
         chrome.action.setPopup({ popup: 'running.html' });
-        //window.close();
+
+
         // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
+
     }
 
 
@@ -103,16 +90,24 @@ chrome.runtime.onMessage.addListener((request) => {
         }
     }
 
-
-
-
-    function startWorkSession(workTime, numberOfBreaks, breakLength) {
-
-        alert('Work session started! Stay focused.');
-        //chrome.action.setPopup({ popup: 'running.html' });
-        //window.close();
-        // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
-
-
+    function checkNumBreaksIsZero(currentBreaksLeft) {
+        if (currentBreaksLeft <= 0 && numberOfBreaks != 1) {
+            alert("NO MORE BREAKS :(");
+            return true;
+        }
+        return false
     }
+
+    function OnBreakCheck() {
+        var OnBreak = prompt("Are you on break? (Yes/No)", "No")
+        if (OnBreak == "No" || OnBreak == "no")
+            alert("Best get back to work")
+        else {
+            alert("ahhh");
+            IsOnBreak();
+        }
+    }
+
 });
+
+
