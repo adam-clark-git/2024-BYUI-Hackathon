@@ -4,7 +4,8 @@
   "description": "Allows users to focus on work and avoid getting distracted",
   "version": "1.0",
   "permissions": [
-    "storage"
+    "storage",
+    "tabs"
   ],
   "options_page": "options.html",
   "icons": {
