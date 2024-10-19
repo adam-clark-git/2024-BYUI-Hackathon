@@ -10,21 +10,31 @@ document.getElementById('start-btn').addEventListener('click', function () {
         return;
     }
 
+    function startWorkSession() {
+        alert('Work session started! Stay focused.');
+        chrome.action.setPopup({ popup: 'running.html' });
+        var currentWorkTime = new Timer(function () {
+            alert("Work is done!");
+            ShutOff();
+        }, 1000 * workTime)
+
+        // // testing code, delete later
+        // OnBreakCheck()
+    }
 
 
 
 
-
-
-    // TEMP FOR TESTING get the real list from options
-    const urlsList = [
-        "https://www.coolmathgames.com/",
-        "https://www.other.com",
-        "https://www.youtube.com/*"
-    ];
+});
+// TEMP FOR TESTING get the real list from options
+const urlsList = [
+    "https://www.coolmathgames.com/",
+    "https://www.other.com",
+    "https://www.youtube.com/*"
+];
 
     // let currentWorkTime;
-    let currentBreaksLeft;
+    let currentBreaksLeft = numberOfBreaks;
     let breakTimer;
 
     chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
@@ -121,17 +131,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
 
 
-    function startWorkSession() {
-        alert('Work session started! Stay focused.');
-        chrome.action.setPopup({ popup: 'running.html' });
-        var currentWorkTime = new Timer(function () {
-            alert("Work is done!");
-            ShutOff();
-        }, 1000 * workTime)
-
-        // // testing code, delete later
-        // OnBreakCheck()
-    }
+    
     
     function ShutOff() {
 
@@ -139,6 +139,5 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
     // Start the background session
     startBackground();
-    testAfter();
-}); 
+    testAfter(); 
 
