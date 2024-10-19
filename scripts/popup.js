@@ -24,11 +24,6 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
 
 
-
-    // Should trigger every time user switches to a productive website.
-
-
-
     function ShutOff() {
         // ask user to start a new work session
     }
@@ -47,29 +42,4 @@ document.getElementById('start-btn').addEventListener('click', function () {
     }
     // Start the work session
     startWorkSession();
-});
-
-
-
-
-
-var Timer = function (callback, delay) {
-    var timerId, start, remaining = delay;
-
-    this.pause = function () {
-        window.clearTimeout(timerId);
-        timerId = null;
-        remaining -= Date.now() - start;
-    };
-
-    this.resume = function () {
-        if (timerId) {
-            return;
-        }
-
-        start = Date.now();
-        timerId = window.setTimeout(callback, remaining);
-    };
-
-    this.resume();
-};
+}); 
