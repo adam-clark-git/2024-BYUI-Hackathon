@@ -66,6 +66,15 @@ chrome.runtime.onMessage.addListener((request) => {
         });
 
 
+        const breakInterval = workTime / numberOfBreaks;
+
+        // Create alarms for breaks
+        for (let i = 1; i <= numberOfBreaks; i++) {
+            const breakTime = breakInterval * i;
+            chrome.alarms.create(`break_start_${i}`, { delayInMinutes: breakTime });
+            chrome.alarms.create(`break_end_${i}`, { delayInMinutes: breakTime + breakLength });
+        }
+
         chrome.alarms.create('workSessionEnded', { delayInMinutes: workTime });
 
 

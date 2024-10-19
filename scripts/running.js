@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve the work session data from Chrome storage
     chrome.storage.local.get(['workSessionStartTime', 'workSessionDuration'], function (result) {
@@ -25,9 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 let timerInterval = null;
 
+
 function startTimer(duration) {
     const timerElement = document.getElementById('timer');
     let time = duration;
+
 
     // Create an interval that updates the timer display every second
     const interval = setInterval(() => {
