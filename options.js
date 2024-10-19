@@ -22,14 +22,22 @@ const websites = websiteList.getElementsByTagName('li');
 
 const siteArray = Array.from(websites).map(item => item.textContent);
 
+console.log(siteArray)
+
 form.addEventListener("submit", function(event) {
   event.preventDefault();
 
   const website = document.getElementById('name');
-  array.push(website.value);
+  siteArray.push(website.value);
   console.log(siteArray);
   saveWebsites(siteArray)
 });
+
+function saveWebsites(array) {
+  chrome.storage.sync.set({websites:array}).then(() => {
+    console.log("Value is set");
+  });
+}
 
 const dropdownHeaders = document.querySelectorAll('.dropdown-header');
 
