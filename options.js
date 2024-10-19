@@ -29,33 +29,8 @@ const restoreOptions = () => {
 };
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-document.getElementById('save').addEventListener('click', saveOptions);
 
-const addButton = document.getElementById('button1');
-const websiteInput = document.getElementById('input-container');
-
-if (addButton) {
-  addButton.addEventListener('click', function () {
-    const newWebsite = websiteInput.value;
-    console.log("yoho");
-    if (newWebsite) {
-      let websites = result.websiteList || [];
-
-      chrome.storage.local.set({ "websiteList": websites }, function () {
-        console.log('Website list is saved.');
-      });
-      chrome.storage.local.get({ "websiteList": websites }, function (result) {
-        const websites = result.websiteList || [];
-        updateWebsiteListUI(websites)
-      });
-      function updateWebsiteListUI(websites) {
-        websiteList.innerHTML = '';
-        websites.forEach(function (website) {
-          const listItem = document.createElement('li');
-          listItem.textContent = website;
-          websiteList.appendChild(listItem);
-        });
-      }
-    }
-  })
-};
+const dropdownHeader = document.querySelector('.dropdown-header');
+  dropdownHeader.addEventListener('click', function () {
+    this.parentElement.classList.toggle('active');
+  });

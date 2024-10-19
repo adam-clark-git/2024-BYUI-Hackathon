@@ -1,6 +1,6 @@
 document.getElementById('start-btn').addEventListener('click', function () {
     // Get values from input fields
-    const workTime = parseInt(document.getElementById('work-time').value) * 60; // convert to seconds
+    // const workTime = parseInt(document.getElementById('work-time').value) * 60; // convert to seconds
     const numberOfBreaks = parseInt(document.getElementById('breaks').value);
     const breakLength = parseInt(document.getElementById('break-length').value) * 60; // convert to seconds
 
@@ -11,10 +11,11 @@ document.getElementById('start-btn').addEventListener('click', function () {
     }
 
 
-    function startBackground()
-    {
-        chrome.action.setPopup({popup: 'running.html'});
-        window.close();
+    function startBackground() {
+        chrome.action.setPopup({ popup: 'running.html' });
+
+        let workTime = parseInt(document.getElementById('work-time').value) * 60;
+
         startWorkSession(workTime);
         panic();
         
@@ -29,7 +30,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
         alert("ahh");
     }
 
-    // Start the work session
+    // Start the background session
     startBackground();
     testAfter();
 }); 
