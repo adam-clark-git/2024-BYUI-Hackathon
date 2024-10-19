@@ -30,7 +30,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
     // Function to start work session
     function startWorkSession() {
         alert('Work session started! Stay focused. I WILL DESTROY YOU');
-
+        OnBreakCheck()
         //handleBreaks();
     }
 
