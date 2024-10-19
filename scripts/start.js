@@ -23,12 +23,6 @@ document.getElementById('start-btn').addEventListener('click', function () {
 });
 
 
-
-// Should run whenever a user goes to a flagged website
-
-
-
-
 // Should run whenever user selects to go on a break
 function IsOnBreak() {
     //checks if there are no more breaks
@@ -67,21 +61,5 @@ function ShutOff() {
 
 
 
-chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
-    if (changeInfo.status === 'complete' && tab.url) {
-        urlChecker(tab.url);
-    }
-});
 
 
-function urlChecker(currentUrl) {
-
-    const lowerCurrentUrl = currentUrl.toLowerCase();
-    const lowerUrlsList = urlsList.toLowerCase();
-
-    const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
-
-    if (match) {
-        OnBreakCheck()
-    }
-}
