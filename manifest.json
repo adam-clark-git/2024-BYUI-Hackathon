@@ -20,7 +20,8 @@
         {
             "js": ["scripts/break.js"],
             "matches": [
-                "https://www.coolmathgames.com/*"
+                "https://www.coolmathgames.com/*",
+                "https://developer.chrome.com/docs/webstore/*"
             ]
         }
     ]
