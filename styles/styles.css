@@ -336,4 +336,10 @@ body {
     background-color: var(--bg-default);
     border: none;
   }
+
+  .button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #0d00ff; /* Green */
+  }
   
