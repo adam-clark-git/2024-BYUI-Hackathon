@@ -34,26 +34,28 @@ document.getElementById('save').addEventListener('click', saveOptions);
 const addButton = document.getElementById('button1');
 const websiteInput = document.getElementById('input-container');
 
-addButton.addEventListener('click', function () {
-  const newWebsite = websiteInput.value;
-
-  if (newWebsite) {
-      let websites = result.websiteList || [];
-
-      chrome.storage.local.set({ "websiteList": websites }, function() {
-        console.log('Website list is saved.');
+if (addButton) {
+  addButton.addEventListener('click', function () {
+    const newWebsite = websiteInput.value;
+    console.log("yoho");
+    if (newWebsite) {
+        let websites = result.websiteList || [];
+  
+        chrome.storage.local.set({ "websiteList": websites }, function() {
+          console.log('Website list is saved.');
+      });
+        chrome.storage.local.get({ "websiteList": websites }, function(result) {
+          const websites = result.websiteList || [];
+          updateWebsiteListUI(websites)
+      });
+  function updateWebsiteListUI(websites) {
+    websiteList.innerHTML = ''; 
+    websites.forEach(function (website) {
+        const listItem = document.createElement('li');
+        listItem.textContent = website;
+        websiteList.appendChild(listItem);
     });
-      chrome.storage.local.get({ "websiteList": websites }, function(result) {
-        const websites = result.websiteList || [];
-        updateWebsiteListUI(websites)
-    });
-function updateWebsiteListUI(websites) {
-  websiteList.innerHTML = ''; 
-  websites.forEach(function (website) {
-      const listItem = document.createElement('li');
-      listItem.textContent = website;
-      websiteList.appendChild(listItem);
-  });
-}
-}
-});
+  }
+  }
+  })
+};
