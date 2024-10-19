@@ -69,8 +69,7 @@ function startWorkSession(workTime, numberOfBreaks, breakLength) {
     chrome.action.setPopup({ popup: 'running.html' });
     //window.close();
     // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
-
-};
+}
 
 
 function urlChecker(currentUrl) {
