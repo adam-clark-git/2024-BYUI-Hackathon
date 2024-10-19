@@ -335,29 +335,25 @@ body {
     border: 2px solid #0d00ff; /* Green */
   }
   
-/* Dropdown container */
+  /* Dropdown container */
 .dropdown {
     width: 100%;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
 }
 
 /* The dropdown header */
 .dropdown-header {
-    display: flex;
-    align-items: center;
     cursor: pointer;
     width: 100%; /* Make the header take full width */
 }
 
 /* Arrow next to the title */
 .arrow {
-    margin-right: 10px;
     font-size: 18px;
     transition: transform 0.3s;
 }
 
+/* The title of the dropdown */
 .dropdown-title {
     font-size: 18px;
     font-weight: bold;
@@ -365,21 +361,21 @@ body {
     margin-left: 10px; /* Add spacing between arrow and title */
 }
 
+/* The dropdown content, initially hidden */
 .dropdown-content {
     display: none; /* Hide initially */
     background-color: #f9f9f9;
-    min-width: 100%; /* Use 100% to match the width of the header */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     width: 100%; /* Full width of dropdown */
     margin-top: 5px; /* Adds spacing below the header */
 }
 
+/* Rotate the arrow when active */
 .active .arrow {
     transform: rotate(180deg);
 }
 
 /* Show the dropdown content when the header is active */
 .active .dropdown-content {
-    display: block; /* Show the dropdown content */
+    display: block;
 }

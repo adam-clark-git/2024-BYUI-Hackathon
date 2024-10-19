@@ -40,26 +40,34 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
 
   const website = document.getElementById('name');
-  array.push(website.value);
+  siteArray.push(website.value);
   console.log(siteArray);
   saveWebsites(siteArray)
 });
-
-const dropdownHeader = document.querySelector('.dropdown-header');
-const dropdownContent = dropdownHeader.querySelector('.dropdown-content');
 
 function saveWebsites(array) {
   chrome.storage.local.set({websites:array}).then(() => {
     console.log("Value is set");
   });
 }
+
+const dropdownHeader = document.querySelector('.dropdown-header');
+const dropdownContent = dropdownHeader.querySelector('.dropdown-content');
 const submit = document.getElementById('submit');
-const saveButton = document.getElementById('save-btn');
 
 dropdownHeader.addEventListener('click', function(event) {
-    event.stopPropagation(); // Stop the click from propagating to the document
-    this.classList.toggle('active');
-    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    event.stopPropagation(); 
+    if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+        dropdownHeader.classList.remove('active');
+    } else {
+        dropdownContent.style.display = 'block';
+        dropdownHeader.classList.add('active');
+    }
+});
+
+dropdownContent.addEventListener('click', function(event) {
+    event.stopPropagation(); 
 });
 
 document.addEventListener('click', function(event) {
@@ -68,3 +76,11 @@ document.addEventListener('click', function(event) {
         dropdownHeader.classList.remove('active');
     }
 });
+
+if (submit) {
+    submit.addEventListener('click', function(event) {
+        event.stopPropagation(); 
+        dropdownContent.style.display = 'none';
+        dropdownHeader.classList.remove('active');
+    });
+}
