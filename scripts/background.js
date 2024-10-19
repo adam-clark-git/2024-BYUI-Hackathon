@@ -1,13 +1,8 @@
-chrome.runtime.onInstalled.addListener(() => {
-    console.log("Extension installed");
-});
-
 chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
     if (changeInfo.status === 'complete' && tab.url) {
         urlChecker(tab.url);
     }
 });
-
 
 
 const urlList = chrome.storage.sync.get(['websiteList'], function (result) {
@@ -52,10 +47,7 @@ chrome.runtime.onMessage.addListener((request) => {
     }
 
 
-
     function startWorkSession(workTime, numberOfBreaks, breakLength) {
-
-        console.log("stuff")
 
         // chrome.notifications.create({
         //     type: 'basic',
@@ -76,9 +68,22 @@ chrome.runtime.onMessage.addListener((request) => {
 
         chrome.alarms.create('workSessionEnded', { delayInMinutes: workTime });
 
+
         chrome.action.setPopup({ popup: 'running.html' });
 
+        chrome.runtime.sendMessage({
+            type: 'startRunning',
+            workTime: workTime
+        });
+
     }
+
+
+    chrome.alarms.onAlarm.addListener((alarm) => {
+        if (alarm.name === 'workSessionEnded') {
+            chrome.runtime.sendMessage({ type: 'workSessionEnded' });
+        }
+    });
 
 
 

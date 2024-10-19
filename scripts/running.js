@@ -1,40 +1,28 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve the work session data from Chrome storage
-    chrome.storage.local.get(['workSessionStartTime', 'workSessionDuration'], function (result) {
-        if (result.workSessionStartTime && result.workSessionDuration) {
-            const startTime = result.workSessionStartTime;
-            const duration = result.workSessionDuration;
-
-            // Calculate the remaining time
-            const currentTime = Date.now();
-            const timeElapsed = currentTime - startTime;
-            let timeRemaining = duration - timeElapsed;
-
-            if (timeRemaining > 0) {
-                startTimer(timeRemaining / 1000);  // Convert to seconds
-            } else {
-                document.getElementById('timer').innerText = "Work session completed!";
-            }
-        } else {
-            document.getElementById('timer').innerText = "No active session!";
-        }
-    });
+chrome.runtime.onMessage.addListener((request) => {
+    if (request.type === 'startRunning') {
+        startTimer(request.workTime * 60); // Start the timer with work time in seconds
+    }
 });
+
 
 function startTimer(duration) {
     const timerElement = document.getElementById('timer');
-    let time = duration;
+    let time = duration; // Initialize time with the duration in seconds
 
+    // Create an interval that updates the timer display every second
     const interval = setInterval(() => {
-        let minutes = Math.floor(time / 60);
-        let seconds = Math.floor(time % 60);
+        if (time > 0) {
+            let hours = Math.floor(time / 3600);
+            let minutes = Math.floor((time % 3600) / 60);
+            let seconds = time % 60;
 
-        // Update the timer display
-        timerElement.innerText = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+            // Update the timer display
+            timerElement.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 
-        if (time <= 0) {
-            clearInterval(interval);
-            timerElement.innerText = "Work session completed!";
+            time--; // Decrease the time by 1 second
+        } else {
+            clearInterval(interval); // Clear the interval when time is up
+            timerElement.textContent = "Work session completed!";
             chrome.notifications.create({
                 type: 'basic',
                 iconUrl: 'Images/FMLogo128x128.png',
@@ -43,7 +31,10 @@ function startTimer(duration) {
                 priority: 2
             });
         }
+    }, 1000); // Update every second
+}
 
-        time -= 1;  // Decrease time by 1 second
-    }, 1000);  // Update every second
+// Add leading zeroes to time units
+function pad(num) {
+    return num < 10 ? '0' + num : num;
 }
