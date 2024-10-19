@@ -5,6 +5,10 @@ const urlsList = [
     "https://www.youtube.com/*"
 ];
 
+let currentWorkTime;
+let currentBreaksLeft;
+let breakTimer;
+
 chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
     if (changeInfo.status === 'complete' && tab.url) {
         urlChecker(tab.url);
@@ -97,3 +101,20 @@ var Timer = function (callback, delay) {
 
     this.resume();
 };
+
+
+
+function startWorkSession() {
+    alert('Work session started! Stay focused.');
+    var currentWorkTime = new Timer(function () {
+        alert("Work is done!");
+        ShutOff();
+    }, 1000 * workTime)
+
+    // // testing code, delete later
+    // OnBreakCheck()
+}
+
+function ShutOff() {
+
+}

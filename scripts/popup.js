@@ -16,30 +16,12 @@ document.getElementById('start-btn').addEventListener('click', function () {
     let breakTimer;
 
 
-
     function startBackground()
     {
+        
 
     }
 
-
-
-    function ShutOff() {
-        // ask user to start a new work session
-    }
-    // Function to start work session
-
-
-    function startWorkSession() {
-        alert('Work session started! Stay focused.');
-        var currentWorkTime = new Timer(function () {
-            alert("Work is done!");
-            ShutOff();
-        }, 1000 * workTime)
-
-        // // testing code, delete later
-        // OnBreakCheck()
-    }
     // Start the work session
-    startWorkSession();
+    startBackground();
 }); 
