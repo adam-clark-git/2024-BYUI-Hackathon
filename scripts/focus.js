@@ -1,31 +1,37 @@
 document.getElementById('start-btn').addEventListener('click', function () {
     // Get values from input fields
-    const workTime = parseInt(document.getElementById('work-time').value) * 60; // convert to seconds
-    const numberOfBreaks = parseInt(document.getElementById('breaks').value);
-    const breakLength = parseInt(document.getElementById('break-length').value) * 60; // convert to seconds
+    const workTimeTemp = parseInt(document.getElementById('work-time').value) * 60; // convert to seconds
+    const numberOfBreaksTemp = parseInt(document.getElementById('breaks').value);
+    const breakLengthTemp = parseInt(document.getElementById('break-length').value) * 60; // convert to seconds
 
     // Validate inputs
-    if (workTime <= 0 || numberOfBreaks < 0 || breakLength <= 0) {
+    if (workTime1 <= 0 || numberOfBreaks1 < 0 || breakLength1 <= 0) {
         alert('Please enter valid values for all fields.');
         return;
     }
 
-    function startWorkSession() {
-        alert('Work session started! Stay focused.');
-        chrome.action.setPopup({ popup: 'running.html' });
-        var currentWorkTime = new Timer(function () {
-            alert("Work is done!");
-            ShutOff();
-        }, 1000 * workTime)
-
-        // // testing code, delete later
-        // OnBreakCheck()
-    }
+    startWorkSession(workTimeTemp, numberOfBreaksTemp, breakLengthTemp)
 
 
 
 
 });
+
+
+function startWorkSession(workTime2, numberOfBreaks2, breakLength2) {
+    const workTime = workTime2;
+    const numberOfBreaks = numberOfBreaks2;
+    const breakLength = breakLength2
+
+    alert('Work session started! Stay focused.');
+    chrome.action.setPopup({ popup: 'running.html' });
+    var currentWorkTime = new Timer(function () {
+        alert("Work is done!");
+        ShutOff();
+    }, 1000 * workTime)
+
+}
+
 // // TEMP FOR TESTING get the real list from options
 // const urlsList = [
 //     "https://www.coolmathgames.com/",
