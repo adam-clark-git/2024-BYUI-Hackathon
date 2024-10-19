@@ -19,8 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('timer').innerText = "No active session!";
         }
     });
+
+    document.getElementById('cancel-btn').addEventListener('click', ShutOff);
 });
 
+let timerInterval = null;
 
 function startTimer(duration) {
     const timerElement = document.getElementById('timer');
@@ -40,16 +43,42 @@ function startTimer(duration) {
         if (time <= 0) {
             clearInterval(interval); // Clear the interval when time is up
             timerElement.innerText = "Work session completed!";
-            chrome.notifications.create({
-                type: 'basic',
-                iconUrl: 'Images/FMLogo128x128.png',
-                title: 'Work Session Completed',
-                message: 'Good job! Your work session is over!',
-                priority: 2
-            });
+            // chrome.notifications.create({
+            //     type: 'basic',
+            //     iconUrl: 'Images/FMLogo128x128.png',
+            //     title: 'Work Session Completed',
+            //     message: 'Good job! Your work session is over!',
+            //     priority: 2
+            // });
         }
 
         time -= 1;  // Decrease time by 1 second
     }, 1000);  // Update every second
+
 }
 
+function pause() {
+
+}
+
+function resume() {
+
+}
+
+
+
+function ShutOff() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+
+    document.getElementById('timer').innerText = "Work session canceled!";
+
+    chrome.storage.local.remove(['workSessionStartTime', 'workSessionDuration'], function () {
+        console.log("Work session data cleared from storage.");
+    });
+
+
+    chrome.action.setPopup({ popup: 'start-decepticon.html' });
+    window.close();
+}
