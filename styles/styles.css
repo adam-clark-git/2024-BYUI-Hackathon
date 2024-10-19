@@ -343,3 +343,48 @@ body {
     border: 2px solid #0d00ff; /* Green */
   }
   
+  /* Dropdown container */
+.dropdown {
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/* The dropdown header: arrow + title */
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* The arrow next to the title */
+.arrow {
+    margin-right: 10px;
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+/* The title of the dropdown */
+.dropdown-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Rotate the arrow when active */
+.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Show the content when the dropdown is clicked */
+.active .dropdown-content {
+    display: block;
+}
