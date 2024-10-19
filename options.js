@@ -75,3 +75,26 @@ dropdownHeaders.forEach(dropdownHeader => {
         });
     }
 });
+
+
+// Get the dark mode toggle element
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+// Load the user's preference from chrome.storage
+chrome.storage.sync.get('darkMode', (data) => {
+    if (data.darkMode) {
+        darkModeToggle.checked = true;
+        document.body.classList.add('dark-mode');
+    }
+});
+
+// Add event listener to the toggle
+darkModeToggle.addEventListener('change', () => {
+    if (darkModeToggle.checked) {
+        document.body.classList.add('dark-mode');
+        chrome.storage.sync.set({ darkMode: true });
+    } else {
+        document.body.classList.remove('dark-mode');
+        chrome.storage.sync.set({ darkMode: false });
+    }
+});
