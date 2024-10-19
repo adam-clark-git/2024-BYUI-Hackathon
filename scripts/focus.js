@@ -1,8 +1,8 @@
 document.getElementById('start-btn').addEventListener('click', function () {
     // Get values from input fields
-    const workTimeTemp = parseInt(document.getElementById('work-time').value) * 60; // convert to seconds
-    const numberOfBreaksTemp = parseInt(document.getElementById('breaks').value);
-    const breakLengthTemp = parseInt(document.getElementById('break-length').value) * 60; // convert to seconds
+    const workTime = parseInt(document.getElementById('work-time').value) * 60; // convert to seconds
+    const numberOfBreaks = parseInt(document.getElementById('breaks').value);
+    const breakLength = parseInt(document.getElementById('break-length').value) * 60; // convert to seconds
 
     // Validate inputs
     if (workTime1 <= 0 || numberOfBreaks1 < 0 || breakLength1 <= 0) {
@@ -32,9 +32,9 @@ document.getElementById('start-btn').addEventListener('click', function () {
     // ];
 
 
-    // // let currentWorkTime;
-    // let currentBreaksLeft = numberOfBreaks;
-    // let breakTimer;
+    let currentWorkTime;
+    let currentBreaksLeft = numberOfBreaks;
+    let breakTimer;
 
     chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
         if (changeInfo.status === 'complete' && tab.url) {
