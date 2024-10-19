@@ -31,8 +31,8 @@ const restoreOptions = () => {
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.getElementById('save').addEventListener('click', saveOptions);
 
-const addButton = document.getElementById('addButton');
-const websiteInput = document.getElementById('websiteInput');
+const addButton = document.getElementById('button1');
+const websiteInput = document.getElementById('input-container');
 
 addButton.addEventListener('click', function () {
   const newWebsite = websiteInput.value;
