@@ -26,16 +26,21 @@ document.getElementById('start-btn').addEventListener('click', function () {
 
 
 });
-// TEMP FOR TESTING get the real list from options
-const urlsList = [
-    "https://www.coolmathgames.com/",
-    "https://www.other.com",
-    "https://www.youtube.com/*"
-];
+// // TEMP FOR TESTING get the real list from options
+// const urlsList = [
+//     "https://www.coolmathgames.com/",
+//     "https://www.other.com",
+//     "https://www.youtube.com/*"
+// ];
 
 // let currentWorkTime;
 let currentBreaksLeft = numberOfBreaks;
 let breakTimer;
+=======
+// // let currentWorkTime;
+// let currentBreaksLeft = numberOfBreaks;
+// let breakTimer;
+>>>>>>> c65cf884af39d0a2f8f624d6381b1a86f26d775a
 
 chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
     if (changeInfo.status === 'complete' && tab.url) {
@@ -128,6 +133,20 @@ var Timer = function (callback, delay) {
 
     this.resume();
 };
+>>>>>>> c65cf884af39d0a2f8f624d6381b1a86f26d775a
+
+        start = Date.now();
+        timerId = window.setTimeout(callback, remaining);
+    };
+
+<<<<<<< HEAD
+    this.resume();
+};
+
+function ShutOff() {
+=======
+
+
 
 function ShutOff() {
 
