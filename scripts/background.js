@@ -21,7 +21,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     if (alarm.name === 'workSession') {
         chrome.notifications.create({
             type: 'basic',
-            iconUrl: 'icon.png',  // Add your extension's icon here
+            iconUrl: 'Images/FMLogo128x128.png',  // Add your extension's icon here
             title: 'Work Session Completed',
             message: 'Good job! Your work session is over!',
             priority: 2
@@ -30,7 +30,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
         const breakNumber = alarm.name.split('_')[1];
         chrome.notifications.create({
             type: 'basic',
-            iconUrl: 'icon.png',
+            iconUrl: 'Images/FMLogo128x128.png',
             title: `Break ${breakNumber}`,
             message: `It's time for a break! Take a rest.`,
             priority: 2
@@ -50,20 +50,20 @@ chrome.runtime.onMessage.addListener((request) => {
 
 function startWorkSession(workTime, numberOfBreaks, breakLength) {
 
-    alert('Work session started! Stay focused.');
+    chrome.notifications.create({
+        type: 'basic',
+        iconUrl: 'Images/FMLogo128x128.png',  // Ensure you have an icon.png in your extension
+        title: 'Work Session Started',
+        message: 'Stay focused!',
+        priority: 2
+    });
+
+
 
     chrome.alarms.clearAll();
 
 
     chrome.alarms.create('workSession', { delayInMinutes: workTime });
-
-
-
-    // const breakInterval = workTime / (numberOfBreaks + 1);
-
-    // for (let i = 1; i <= numberOfBreaks; i++) {
-    //     chrome.alarms.create(`break_${i}`, { delayInMinutes: breakInterval * i });
-    // }
 
 
     chrome.action.setPopup({ popup: 'running.html' });
@@ -89,7 +89,7 @@ function OnBreakCheck() {
     if (OnBreak == "No" || OnBreak == "no")
         alert("Best get back to work")
     else {
-        alert("ahhh");
+        alert("Have Fun ");
         IsOnBreak();
     }
 }
@@ -98,8 +98,45 @@ function OnBreakCheck() {
 // check if break count is zero
 function checkNumBreaksIsZero() {
     if (currentBreaksLeft <= 0 && numberOfBreaks != 1) {
-        alert("NO MORE BREAKS :(");
+        alert("Sorry you have no more breaks:");
         return true;
     }
     return false
+}
+
+
+
+// Should run whenever user selects to go on a break
+function IsOnBreak() {
+    //checks if there are no more breaks
+    if (currentWorkTime != null) {
+        currentWorkTime.pause();
+    }
+    if (checkNumBreaksIsZero) {
+        return
+    }
+    // checks if there was a timer already running
+    if (breakTimer != null) {
+        breakTimer.resume();
+        return
+    }
+    // starts a new timer
+    var breakTimer = new Timer(function () {
+        alert("Break Over");
+        currentBreaksLeft += -1;
+        breakTimer = null;
+    }, 1000 * (breakLength / 60))
+}
+
+// starts the work time and pauses? the break timer i think that needs to change
+function returnToWork() {
+    if (breakTimer != null) {
+        breakTimer.pause();
+    }
+    currentWorkTime.resume();
+}
+
+
+function ShutOff() {
+
 }
