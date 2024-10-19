@@ -1,32 +1,18 @@
-// Saves options to chrome.storage
-const saveOptions = () => {
-  const color = document.getElementById('color').value;
-  const likesColor = document.getElementById('like').checked;
-
-  chrome.storage.sync.set(
-    { favoriteColor: color, likesColor: likesColor },
-    () => {
-      // Update status to let user know options were saved.
-      const status = document.getElementById('status');
-      status.textContent = 'Options saved.';
-      setTimeout(() => {
-        status.textContent = '';
-      }, 750);
-    }
-  );
-};
-
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
-const restoreOptions = () => {
-  chrome.storage.sync.get(
-    { favoriteColor: 'red', likesColor: true },
-    (items) => {
-      document.getElementById('color').value = items.favoriteColor;
-      document.getElementById('like').checked = items.likesColor;
-    }
-  );
-};
+function restoreOptions() {
+  // Load saved website options from storage (localStorage or Chrome's storage API)
+  // Example using localStorage:
+  let savedWebsites = localStorage.getItem('websites');
+  if (savedWebsites) {
+      siteArray = JSON.parse(savedWebsites);
+      // Now populate your website list with the saved websites
+      // For example:
+      siteArray.forEach(website => {
+          let li = document.createElement('li');
+          li.textContent = website;
+          websiteList.appendChild(li);
+      });
+  }
+}
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 
@@ -40,16 +26,10 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
 
   const website = document.getElementById('name');
-  siteArray.push(website.value);
+  array.push(website.value);
   console.log(siteArray);
   saveWebsites(siteArray)
 });
-
-function saveWebsites(array) {
-  chrome.storage.local.set({websites:array}).then(() => {
-    console.log("Value is set");
-  });
-}
 
 const dropdownHeader = document.querySelector('.dropdown-header');
 const dropdownContent = dropdownHeader.querySelector('.dropdown-content');
