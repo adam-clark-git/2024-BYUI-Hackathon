@@ -1,7 +1,8 @@
 // TEMP FOR TESTING get the real list for options
 const urlsList = [
-    "https://www.coolmath.com",
-    "https://www.other.com"
+    "https://www.coolmath.com/",
+    "https://www.other.com",
+    "https://www.youtube.com/*"
 ];
 
 chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
@@ -12,9 +13,14 @@ chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
 
 
 function urlChecker(currentUrl) {
-    const match = restrictedUrls.some(urlsList => currentUrl.includes(urlsList));
+
+    const lowerCurrentUrl = currentUrl.toLowerCase();
+    const lowerUrlsList = urlsList.toLowerCase();
+
+    const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
 
     if (match) {
         OnBreakCheck()
     } 
 }
+

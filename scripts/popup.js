@@ -4,10 +4,6 @@ document.getElementById('start-btn').addEventListener('click', function () {
     const numberOfBreaks = parseInt(document.getElementById('breaks').value);
     const breakLength = parseInt(document.getElementById('break-length').value) * 60; // convert to seconds
 
-    console.log(`Work time set to: ${workTime / 60} minutes`);
-    console.log(`Number of breaks set to: ${numberOfBreaks}`);
-    console.log(`Break length set to: ${breakLength / 60} minutes`);
-
     // Validate inputs
     if (workTime <= 0 || numberOfBreaks < 0 || breakLength <= 0) {
         alert('Please enter valid values for all fields.');

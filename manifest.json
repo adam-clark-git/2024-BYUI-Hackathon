@@ -5,7 +5,11 @@
   "version": "1.0",
   "permissions": [
     "storage",
-    "tabs"
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>" 
   ],
   "options_page": "options.html",
   "icons": {
