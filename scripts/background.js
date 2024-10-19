@@ -15,8 +15,6 @@ function urlChecker(currentUrl) {
     const match = restrictedUrls.some(urlsList => currentUrl.includes(urlsList));
 
     if (match) {
-        console.log(`Access to ${currentUrl} is restricted.`);
-        // You can implement further actions here, such as blocking the tab or showing a notification
         OnBreakCheck()
     } 
 }
