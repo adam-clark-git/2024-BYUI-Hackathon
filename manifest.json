@@ -15,5 +15,13 @@
   },
   "action": {
     "default_popup": "popup.html"
-  }
+  },
+  "content_scripts": [
+        {
+            "js": ["scripts/break.js"],
+            "matches": [
+                "https://www.coolmathgames.com/*"
+            ]
+        }
+    ]
 }
