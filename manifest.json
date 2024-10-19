@@ -6,6 +6,7 @@
   "permissions": [
     "storage"
   ],
+  "options_page": "options.html",
   "icons": {
     "16": "images/FMLogo16x16.png",
     "32": "images/FMLogo32x32.png",
