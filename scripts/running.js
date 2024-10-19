@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const duration = result.workSessionDuration;
 
             // Calculate the remaining time
-            const currentTime = Date.now();
+            const currentTime = Date.now() / 1000 / 60;
             const timeElapsed = currentTime - startTime;
-            let timeRemaining = duration - timeElapsed;
+            let timeRemaining = duration - (startTime + timeElapsed);
 
             if (timeRemaining > 0) {
-                startTimer(timeRemaining / 1000);  // Convert to seconds
+                startTimer(timeRemaining * 60);  // Convert to seconds
             } else {
                 document.getElementById('timer').innerText = "Work session completed!";
             }
@@ -19,12 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('timer').innerText = "No active session!";
         }
     });
-});
-
-chrome.runtime.onMessage.addListener((request) => {
-    if (request.type === 'startRunning') {
-        startTimer(request.workTime * 60); // Start the timer with work time in seconds
-    }
 });
 
 

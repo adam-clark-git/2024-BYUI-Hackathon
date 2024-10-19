@@ -58,11 +58,11 @@ chrome.runtime.onMessage.addListener((request) => {
         //     priority: 2
         // });
 
-        const startTime = Date.now();  // Get the current time
+        const startTime = Date.now() / 1000 / 60;  // Get the current time
 
         chrome.storage.local.set({
             'workSessionStartTime': startTime,
-            'workSessionDuration': workTime * 60 * 1000 // Convert to milliseconds
+            'workSessionDuration': startTime + workTime
         });
 
 

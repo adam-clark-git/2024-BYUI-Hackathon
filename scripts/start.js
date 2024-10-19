@@ -1,6 +1,6 @@
 document.getElementById('start-btn').addEventListener('click', function () {
     // Get values from input fields
-    const workTime = parseInt(document.getElementById('work-time').value) * 60; // convert to seconds
+    const workTime = parseInt(document.getElementById('work-time').value);
     const numberOfBreaks = parseInt(document.getElementById('breaks').value);
     const breakLength = parseInt(document.getElementById('break-length').value) * 60; // convert to seconds
 
