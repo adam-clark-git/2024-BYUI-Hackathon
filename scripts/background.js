@@ -17,8 +17,6 @@ function urlChecker(currentUrl) {
     if (match) {
         console.log(`Access to ${currentUrl} is restricted.`);
         // You can implement further actions here, such as blocking the tab or showing a notification
-        chrome.tabs.update(tabId, { url: "https://www.yourblockpage.com" }); // Redirect to a block page
-    } else {
-        console.log(`Access to ${currentUrl} is allowed.`);
-    }
+        OnBreakCheck()
+    } 
 }
