@@ -39,23 +39,23 @@ if (addButton) {
     const newWebsite = websiteInput.value;
     console.log("yoho");
     if (newWebsite) {
-        let websites = result.websiteList || [];
-  
-        chrome.storage.local.set({ "websiteList": websites }, function() {
-          console.log('Website list is saved.');
+      let websites = result.websiteList || [];
+
+      chrome.storage.local.set({ "websiteList": websites }, function () {
+        console.log('Website list is saved.');
       });
-        chrome.storage.local.get({ "websiteList": websites }, function(result) {
-          const websites = result.websiteList || [];
-          updateWebsiteListUI(websites)
+      chrome.storage.local.get({ "websiteList": websites }, function (result) {
+        const websites = result.websiteList || [];
+        updateWebsiteListUI(websites)
       });
-  function updateWebsiteListUI(websites) {
-    websiteList.innerHTML = ''; 
-    websites.forEach(function (website) {
-        const listItem = document.createElement('li');
-        listItem.textContent = website;
-        websiteList.appendChild(listItem);
-    });
-  }
-  }
+      function updateWebsiteListUI(websites) {
+        websiteList.innerHTML = '';
+        websites.forEach(function (website) {
+          const listItem = document.createElement('li');
+          listItem.textContent = website;
+          websiteList.appendChild(listItem);
+        });
+      }
+    }
   })
 };
