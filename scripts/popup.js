@@ -31,11 +31,13 @@ document.getElementById('start-btn').addEventListener('click', function () {
         else {
             IsOnBreak()
         }
-            
     }
     // Should run whenever user selects to go on a break
     function IsOnBreak() {
         //checks if there are no more breaks
+        if (currentWorkTime != null) {
+            currentWorkTime.pause();
+        }
         if (checkNumBreaksIsZero) {
             return
         }
@@ -57,6 +59,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
         if (breakTimer != null) {
             breakTimer.pause();
         }
+        currentWorkTime.resume();
     }
     function checkNumBreaksIsZero() {
         if (currentBreaksLeft <= 0 && numberOfBreaks != 1) {
