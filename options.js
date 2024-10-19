@@ -75,3 +75,16 @@ dropdownHeaders.forEach(dropdownHeader => {
         });
     }
 });
+
+function printArrayToHTML(array) {
+  const listElement = document.getElementById('websiteList');
+  
+  array.forEach(item => {
+      const listItem = document.createElement('li'); 
+      listItem.textContent = item; 
+      listElement.appendChild(listItem);
+  });
+}
+printArrayToHTML(websiteList);
+
+
