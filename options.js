@@ -28,19 +28,7 @@ const restoreOptions = () => {
   );
 };
 
-function updateWebsiteListUI(websites) {
-  const websiteList = document.getElementById('websiteList');
-  websiteList.innerHTML = ''; 
-  websites.forEach(function (website) {
-    const listItem = document.createElement('li');
-    listItem.textContent = website;
-    websiteList.appendChild(listItem);
-  });
-}
-
 document.addEventListener('DOMContentLoaded', restoreOptions);
-
-document.getElementById('save').addEventListener('click', saveOptions);
 
 const dropdownHeader = document.querySelector('.dropdown-header');
   dropdownHeader.addEventListener('click', function () {
