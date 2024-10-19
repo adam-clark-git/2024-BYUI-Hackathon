@@ -52,10 +52,7 @@ chrome.runtime.onMessage.addListener((request) => {
     }
 
 
-
     function startWorkSession(workTime, numberOfBreaks, breakLength) {
-
-        console.log("stuff")
 
         // chrome.notifications.create({
         //     type: 'basic',
@@ -76,9 +73,23 @@ chrome.runtime.onMessage.addListener((request) => {
 
         chrome.alarms.create('workSessionEnded', { delayInMinutes: workTime });
 
+
+
+        chrome.runtime.sendMessage({
+            type: 'startWorkSession',
+            workTime: workTime
+        });
+
         chrome.action.setPopup({ popup: 'running.html' });
 
     }
+
+
+    chrome.alarms.onAlarm.addListener((alarm) => {
+        if (alarm.name === 'workSessionEnded') {
+            chrome.runtime.sendMessage({ type: 'workSessionEnded' });
+        }
+    });
 
 
 

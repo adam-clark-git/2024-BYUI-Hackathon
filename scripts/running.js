@@ -47,3 +47,6 @@ function startTimer(duration) {
         time -= 1;  // Decrease time by 1 second
     }, 1000);  // Update every second
 }
+
+
+
