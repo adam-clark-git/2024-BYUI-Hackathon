@@ -10,41 +10,35 @@ document.getElementById('start-btn').addEventListener('click', function () {
         return;
     }
 
+    
+    
+
+    function startWorkSession() {
+
+        alert('Work session started! Stay focused.');
+        chrome.action.setPopup({ popup: 'running.html' });
+        window.close();
+        var currentWorkTime = new Timer(function () {
+            alert("Work is done!");
+            ShutOff();
+        }, 1000 * workTime)
+        OnBreakCheck();
+
+    }
+
+    // // TEMP FOR TESTING get the real list from options
+    // const urlsList = [
+    //     "https://www.coolmathgames.com/",
+    //     "https://www.other.com",
+    //     "https://www.youtube.com/*"
+    // ];
 
 
-
-
-
-
-    // TEMP FOR TESTING get the real list from options
-    const urlsList = [
-        "https://www.coolmathgames.com/",
-        "https://www.other.com",
-        "https://www.youtube.com/*"
-    ];
-
-    // let currentWorkTime;
-    let currentBreaksLeft;
+    let currentWorkTime;
+    let currentBreaksLeft = numberOfBreaks;
     let breakTimer;
 
-    chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
-        if (changeInfo.status === 'complete' && tab.url) {
-            urlChecker(tab.url);
-        }
-    });
-
-
-    function urlChecker(currentUrl) {
-
-        const lowerCurrentUrl = currentUrl.toLowerCase();
-        const lowerUrlsList = urlsList.toLowerCase();
-
-        const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
-
-        if (match) {
-            OnBreakCheck()
-        }
-    }
+    
 
 
     // Should run whenever a user goes to a flagged website
@@ -53,7 +47,8 @@ document.getElementById('start-btn').addEventListener('click', function () {
         if (OnBreak == "No" || OnBreak == "no")
             alert("Best get back to work")
         else {
-            IsOnBreak()
+            alert("ahhh");
+            IsOnBreak();
         }
     }
 
@@ -95,50 +90,53 @@ document.getElementById('start-btn').addEventListener('click', function () {
             alert("NO MORE BREAKS :(");
             return true;
         }
+        return false
     }
-
-
-    var Timer = function (callback, delay) {
-        var timerId, start, remaining = delay;
-
-        this.pause = function () {
-            window.clearTimeout(timerId);
-            timerId = null;
-            remaining -= Date.now() - start;
-        };
-
-        this.resume = function () {
-            if (timerId) {
-                return;
-            }
-
-            start = Date.now();
-            timerId = window.setTimeout(callback, remaining);
-        };
-
-        this.resume();
-    };
-
-
-
-    function startWorkSession() {
-        alert('Work session started! Stay focused.');
-        chrome.action.setPopup({ popup: 'running.html' });
-        var currentWorkTime = new Timer(function () {
-            alert("Work is done!");
-            ShutOff();
-        }, 1000 * workTime)
-
-        // // testing code, delete later
-        // OnBreakCheck()
-    }
-    
     function ShutOff() {
 
     }
 
-    // Start the background session
-    startBackground();
-    testAfter();
-}); 
+    startWorkSession()
 
+});
+
+
+chrome.tabs.onUpdated.addListener((changeInfo, tab) => {
+    if (changeInfo.status === 'complete' && tab.url) {
+        urlChecker(tab.url);
+    }
+});
+
+
+function urlChecker(currentUrl) {
+
+    const lowerCurrentUrl = currentUrl.toLowerCase();
+    const lowerUrlsList = urlsList.toLowerCase();
+
+    const match = lowerUrlsList.some(urlsList => lowerCurrentUrl.includes(urlsList));
+
+    if (match) {
+        OnBreakCheck()
+    }
+}
+ 
+var Timer = function (callback, delay) {
+    var timerId, start, remaining = delay;
+
+    this.pause = function () {
+        window.clearTimeout(timerId);
+        timerId = null;
+        remaining -= Date.now() - start;
+    };
+
+    this.resume = function () {
+        if (timerId) {
+            return;
+        }
+
+        start = Date.now();
+        timerId = window.setTimeout(callback, remaining);
+    };
+
+    this.resume();
+};
