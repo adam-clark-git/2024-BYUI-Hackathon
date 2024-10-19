@@ -15,6 +15,14 @@ const urlsList = [
     "https://www.youtube.com/*"
 ];
 
+const urlList = chrome.storage.sync.get(['websiteList'], function(result){
+    if (result.websiteList) {
+        console.log('Website list retrieved:', result.websiteList);
+    }
+    else {
+        console.log('gg we are cooked')
+    }
+})
 
 // Listen for alarms
 chrome.alarms.onAlarm.addListener((alarm) => {
@@ -71,7 +79,7 @@ chrome.runtime.onMessage.addListener((request) => {
 
         };
     }
-});
+);
 
 
 function urlChecker(currentUrl) {
