@@ -419,7 +419,7 @@ body {
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #28a745;
 }
 
 input:checked + .slider:before {
@@ -428,12 +428,12 @@ input:checked + .slider:before {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: #000000;
+    background-color: #616161;
     color: white;
 }
 
 .dark-mode .dropdown-header {
-    background-color: #1e1e1e;
+    background-color: #616161;
 }
 
 .dark-mode .dropdown-title {
@@ -442,7 +442,7 @@ body.dark-mode {
 
 /* Dark Mode for the App Container */
 .dark-mode .app-container {
-    background-color: #181818;
+    background-color: #616161;
     color: #e0e0e0;
     border: 1px solid #333;
 }
