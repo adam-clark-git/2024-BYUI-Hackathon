@@ -155,3 +155,4 @@ document.getElementById('start-btn').addEventListener('click', function () {
 }); 
 
     startWorkSession();
+})
