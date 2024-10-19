@@ -84,8 +84,6 @@ chrome.runtime.onMessage.addListener((request) => {
         //window.close();
         // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
 
-<<<<<<< HEAD
-
         chrome.action.setPopup({ popup: 'running.html' });
         //window.close();
         // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
@@ -103,18 +101,18 @@ chrome.runtime.onMessage.addListener((request) => {
         if (match) {
             OnBreakCheck()
         }
-);
+    }
 
 
 
 
-function startWorkSession(workTime, numberOfBreaks, breakLength) {
+    function startWorkSession(workTime, numberOfBreaks, breakLength) {
 
-    alert('Work session started! Stay focused.');
-    //chrome.action.setPopup({ popup: 'running.html' });
-    //window.close();
-    // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
+        alert('Work session started! Stay focused.');
+        //chrome.action.setPopup({ popup: 'running.html' });
+        //window.close();
+        // Send workTime, numberOfBreaks, and breakLength to serviceWorker.
 
 
-}
+    }
 });
