@@ -60,6 +60,7 @@ chrome.runtime.onMessage.addListener((request) => {
 
         const startTime = Date.now() / 1000 / 60;  // Get the current time
 
+
         chrome.storage.local.set({
             'workSessionStartTime': startTime,
             'workSessionDuration': startTime + workTime
@@ -84,6 +85,11 @@ chrome.runtime.onMessage.addListener((request) => {
             type: 'startRunning',
             workTime: workTime
         });
+
+        var OnBreak = prompt("Are you on break? (Yes/No)", "No")
+        if (OnBreak == "No" || OnBreak == "no")
+            alert("Best get back to work")
+
 
     }
 
