@@ -77,10 +77,8 @@ dropdownHeaders.forEach(dropdownHeader => {
 });
 
 
-// Get the dark mode toggle element
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 
-// Load the user's preference from chrome.storage
 chrome.storage.sync.get('darkMode', (data) => {
     if (data.darkMode) {
         darkModeToggle.checked = true;
@@ -88,7 +86,6 @@ chrome.storage.sync.get('darkMode', (data) => {
     }
 });
 
-// Add event listener to the toggle
 darkModeToggle.addEventListener('change', () => {
     if (darkModeToggle.checked) {
         document.body.classList.add('dark-mode');

@@ -353,34 +353,29 @@ body {
     transition: transform 0.3s;
 }
 
-/* The title of the dropdown */
 .dropdown-title {
     font-size: 18px;
     font-weight: bold;
-    display: inline-block; /* Ensure the title and arrow are inline */
-    margin-left: 10px; /* Add spacing between arrow and title */
+    display: inline-block; 
+    margin-left: 10px;
 }
 
-/* The dropdown content, initially hidden */
 .dropdown-content {
-    display: none; /* Hide initially */
+    display: none; 
     background-color: #f9f9f9;
     padding: 12px 16px;
-    width: 100%; /* Full width of dropdown */
-    margin-top: 5px; /* Adds spacing below the header */
+    width: 100%; 
+    margin-top: 5px; 
 }
 
-/* Rotate the arrow when active */
 .active .arrow {
     transform: rotate(180deg);
 }
 
-/* Show the dropdown content when the header is active */
 .active .dropdown-content {
     display: block;
 }
 
- /* Styling the switch (slider) */
 .switch {
     position: relative;
     display: inline-block;
@@ -426,7 +421,6 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* Dark Mode Styles */
 body.dark-mode {
     background-color: #616161;
     color: white;
